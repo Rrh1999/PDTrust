@@ -1,0 +1,12 @@
+{
+  "name": "pdtrust",
+  "version": "1.0.0",
+  "description": "Task Manager Web App using Node and Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
