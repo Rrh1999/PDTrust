@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1>Project Manager</h1>
+<input type="text" id="newProjectName" placeholder="Project name">
+<input type="color" id="newProjectColor" value="#007bff">
+<button onclick="addProject()">Add Project</button>
+
+<h2>One-Off Tasks</h2>
+<input type="text" id="taskName" placeholder="Task name">
+<select id="projectSelect"></select>
+<input type="date" id="dueDate">
+<select id="urgency">
+  <option>High</option><option>High/Medium</option><option>Medium</option><option>Medium/Low</option><option>Low</option>
+</select>
+<select id="importance">
+  <option>High</option><option>High/Medium</option><option>Medium</option><option>Medium/Low</option><option>Low</option>
+</select>
+<button onclick="validateAndAddTask()">Add Task</button>
+<button onclick="showCompletedTasks()">Show Completed Tasks</button>
+<table>
+<thead><tr><th>Task</th><th>Project</th><th>Due Date</th><th>Urgency</th><th>Importance</th><th>Actions</th></tr></thead>
+<tbody id="taskList"></tbody>
+</table>
+
+<h2>Recurring Tasks</h2>
+<input type="text" id="recTaskName" placeholder="Task name">
+<select id="recProjectSelect"></select>
+<input type="date" id="recStartDate">
+<input type="number" id="recIntervalValue" placeholder="Interval" min="1">
+<select id="recIntervalUnit">
+  <option value="days">Days</option><option value="weeks">Weeks</option><option value="months">Months</option><option value="years">Years</option>
+</select>
+<select id="recUrgency">
+  <option>High</option><option>High/Medium</option><option>Medium</option><option>Medium/Low</option><option>Low</option>
+</select>
+<select id="recImportance">
+  <option>High</option><option>High/Medium</option><option>Medium</option><option>Medium/Low</option><option>Low</option>
+</select>
+<button onclick="addRecurringTask()">Add Recurring Task</button>
+<button onclick="showRecurringHistory()">Show Recurring History</button>
+<table>
+<thead><tr><th>Task</th><th>Project</th><th>Due Date</th><th>Urgency</th><th>Importance</th><th>Actions</th></tr></thead>
+<tbody id="recurringList"></tbody>
+</table>
+
+<h2>Weekly Grid Tasks</h2>
+<input type="text" id="weeklyTaskName" placeholder="Task name">
+<select id="weeklyProject"></select>
+<select id="weeklyUrgency">
+  <option>High</option><option>High/Medium</option><option>Medium</option><option>Medium/Low</option><option>Low</option>
+</select>
+<select id="weeklyImportance">
+  <option>High</option><option>High/Medium</option><option>Medium</option><option>Medium/Low</option><option>Low</option>
+</select>
+<select id="weeklyDays" multiple>
+  <option value="0">Monday</option><option value="1">Tuesday</option><option value="2">Wednesday</option>
+  <option value="3">Thursday</option><option value="4">Friday</option><option value="5">Saturday</option><option value="6">Sunday</option>
+</select>
+<button onclick="addWeeklyTask()">Add Weekly Task</button>
+<button onclick="changeWeek(-1)">&larr; Previous Week</button>
+<button onclick="changeWeek(1)">Next Week &rarr;</button>
+<table>
+<thead>
+<tr>
+  <th>Task</th><th>Project</th><th>Urgency</th><th>Importance</th>
+  <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+</tr>
+</thead>
+<tbody id="weeklyGrid"></tbody>
+</table>
+<div style="margin-top:2rem;font-weight:bold;font-size:1.2rem;" id="weekCommencing">Week Commencing: <span id="weekDateDisplay">Loading...</span></div>
+
+<div id="overlay" onclick="closeModals()"></div>
+<div id="recurHistoryModal" class="modal">
+  <h3>Recurring Task History</h3>
+  <ul id="recurHistoryList"></ul>
+  <button onclick="closeModals()">Close</button>
+</div>
+<div id="completedModal" class="modal">
+  <h3>Completed One-Off Tasks</h3>
+  <ul id="completedList"></ul>
+  <button onclick="closeModals()">Close</button>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
