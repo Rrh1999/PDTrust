@@ -1,1 +1,30 @@
-
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/README b/README
+index 8b137891791fe96927ad78e64b0aad7bded08bdc..5a5dd8a57cbe16379f708d0000ff5882ef510dee 100644
+--- a/README
++++ b/README
+@@ -1 +1,21 @@
++# Task Manager Web App
+ 
++This repository contains a simple task manager that stores its data on the server so you can access it from any device. The application uses a small Node.js backend that saves data to `data.json` and serves the web interface from the `public/` directory.
++
++## Usage
++
++1. Install dependencies:
++
++```bash
++npm install
++```
++
++2. Start the server:
++
++```bash
++npm start
++```
++
++3. Open `http://localhost:3000` in your browser.
++
++All tasks and projects are saved in `data.json` on the server, so you can host the server anywhere to keep your data accessible online.
+ 
+EOF
+)
